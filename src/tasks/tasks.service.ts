@@ -10,6 +10,10 @@ export class TasksService {
         return this.tasks;
     }
 
+    getTaskById(id: string): Task {
+        return this.tasks.find(task => task.id === id)
+    }
+
     createTask(title: string, description: string, status: TaskStatus): Task;
     createTask<T extends Partiale<Task>>(inputTask?: T): Task;
     createTask<T extends Partiale<Task>>(param1: T | string, description?: string, status?: TaskStatus): Task {
