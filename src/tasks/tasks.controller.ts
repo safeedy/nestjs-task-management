@@ -1,4 +1,4 @@
-import { Controller, Get, Post, Body, Param } from '@nestjs/common';
+import { Controller, Get, Post, Body, Param, Delete } from '@nestjs/common';
 import { TasksService } from './tasks.service';
 import { Task, Partiale, TaskStatus } from './task.model';
 import { thistle } from 'color-name';
@@ -36,5 +36,10 @@ export class TasksController {
             status
         }
         return this.tasksService.createTask(createTaskDto);
+    }
+
+    @Delete('/:id')
+    deleteTask(@Param('id') id: string): Task[] {
+        return this.tasksService.deleteTask(id)
     }
 }
